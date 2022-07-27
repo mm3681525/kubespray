@@ -33,4 +33,4 @@ calicoctl_download_url: "{{ files_repo }}/kubernetes/calico/{{ calico_ctl_versio
 calico_crds_download_url: "{{ files_repo }}/kubernetes/calico/{{ calico_version }}.tar.gz"
 
 ## Docker
-docker_ubuntu_repo_base_url: "{{ ubuntu_repo }}/docker-ce"
+docker_ubuntu_repo_base_url: "{{ ubuntu_repo }}"
