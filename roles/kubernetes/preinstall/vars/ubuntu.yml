@@ -7,3 +7,8 @@ required_pkgs:
   - conntrack
   - apparmor
   - libseccomp2
+
+apt_repo_info:
+  repos:
+    - >
+      deb [trusted=yes] {{ ubuntu_repo }} ./
