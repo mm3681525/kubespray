@@ -50,6 +50,13 @@
   tags:
     - bootstrap-os
 
+- name: ensure apt repository is enabled
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items: "{{ apt_repo_info.repos }}"
+  when: ansible_pkg_mgr == 'apt'
+
 - name: Update common_required_pkgs with ipvsadm when kube_proxy_mode is ipvs
   set_fact:
     common_required_pkgs: "{{ common_required_pkgs|default([]) + ['ipvsadm', 'ipset'] }}"
