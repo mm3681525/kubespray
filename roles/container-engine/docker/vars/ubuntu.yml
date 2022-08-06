@@ -31,9 +31,9 @@ docker_cli_versioned_pkg:
 
 docker_package_info:
   pkgs:
-    - "{{ containerd_versioned_pkg[docker_containerd_version | string] }}"
-    - "{{ docker_cli_versioned_pkg[docker_cli_version | string] }}"
-    - "{{ docker_versioned_pkg[docker_version | string] }}"
+    - containerd.io
+    - docker-ce-cli
+    - docker-ce
 
 docker_repo_key_info:
   url: '{{ docker_ubuntu_repo_gpgkey }}'
@@ -43,6 +43,4 @@ docker_repo_key_info:
 docker_repo_info:
   repos:
     - >
-      deb [arch={{ host_architecture }}] {{ docker_ubuntu_repo_base_url }}
-      {{ ansible_distribution_release|lower }}
-      stable
+      deb [trusted=yes] {{ docker_ubuntu_repo_base_url }} ./
