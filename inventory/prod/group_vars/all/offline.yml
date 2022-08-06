@@ -1,14 +1,14 @@
 ---
 ## Global Offline settings
 ### Private Container Image Registry
-# registry_host: "myprivateregisry.com"
-# files_repo: "http://myprivatehttpd"
+registry_host: "10.140.79.120:5000"
+files_repo: "http://10.140.79.120:8081/k8s"
 ### If using CentOS, RedHat, AlmaLinux or Fedora
 # yum_repo: "http://myinternalyumrepo"
 ### If using Debian
 # debian_repo: "http://myinternaldebianrepo"
 ### If using Ubuntu
-# ubuntu_repo: "http://myinternalubunturepo"
+ubuntu_repo: "http://10.140.79.120:8081/apt-repo"
 
 ## Container Registry overrides
 # kube_image_repo: "{{ registry_host }}"
@@ -84,9 +84,9 @@
 
 ## Ubuntu
 ### Docker
-# docker_ubuntu_repo_base_url: "{{ ubuntu_repo }}/docker-ce"
+docker_ubuntu_repo_base_url: "{{ ubuntu_repo }}"
 # docker_ubuntu_repo_gpgkey: "{{ ubuntu_repo }}/docker-ce/gpg"
 ### Containerd
-# containerd_ubuntu_repo_base_url: "{{ ubuntu_repo }}/containerd"
+containerd_ubuntu_repo_base_url: "{{ ubuntu_repo }}"
 # containerd_ubuntu_repo_gpgkey: "{{ ubuntu_repo }}/containerd/gpg"
 # containerd_ubuntu_repo_repokey: 'YOURREPOKEY'
