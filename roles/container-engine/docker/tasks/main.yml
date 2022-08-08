@@ -120,6 +120,7 @@
     dest: "/etc/docker/daemon.json"
     content: |
       {
+        "exec-opts": ["native.cgroupdriver=systemd"],
         "insecure-registries": ["10.140.79.120:5000"]
       }
   notify: restart docker
