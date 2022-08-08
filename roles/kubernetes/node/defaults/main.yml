@@ -50,11 +50,11 @@ kubelet_status_update_frequency: 10s
 # kube-vip
 kube_vip_version: v0.4.2
 
-kube_vip_arp_enabled: false
-kube_vip_interface:
+kube_vip_arp_enabled: true
+kube_vip_interface: ens160
 kube_vip_services_interface:
 kube_vip_cidr: 32
-kube_vip_controlplane_enabled: false
+kube_vip_controlplane_enabled: true
 kube_vip_ddns_enabled: false
 kube_vip_services_enabled: false
 kube_vip_leader_election_enabled: "{{ kube_vip_arp_enabled }}"
@@ -65,13 +65,16 @@ kube_vip_bgp_peeraddress:
 kube_vip_bgp_peerpass:
 kube_vip_bgp_peeras:
 kube_vip_bgppeers:
-kube_vip_address:
+kube_vip_address: 10.140.79.119
 
 # Requests for load balancer app
 loadbalancer_apiserver_memory_requests: 32M
 loadbalancer_apiserver_cpu_requests: 25m
-
 loadbalancer_apiserver_keepalive_timeout: 5m
+
+loadbalancer_apiserver:
+  address: "{{ kube_vip_address }}"
+  port: 6443
 
 # Uncomment if you need to enable deprecated runtimes
 # kube_api_runtime_config:
