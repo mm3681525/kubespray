@@ -5,6 +5,8 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
+  when:
+    - inventory_hostname in groups['kube-master']
 
 - name: configure keepalived
   ansible.builtin.template:
@@ -34,5 +36,6 @@
   ansible.builtin.systemd:
     name: keepalived
     state: restarted
-  when: keepalivedConfigured.changed
-
+  when:
+    - keepalivedConfigured.changed
+    - inventory_hostname in groups['kube-master']

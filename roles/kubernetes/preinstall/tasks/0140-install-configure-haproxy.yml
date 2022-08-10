@@ -8,10 +8,13 @@
   vars:
     packages:
     - haproxy
+  when:
+    - inventory_hostname in groups['kube-master']
 
 - name: copy haproxy configuration
   ansible.builtin.template:
     src: templates/haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
   register: haproxyConfigured
-
+  when:
+    - inventory_hostname in groups['kube-master']
