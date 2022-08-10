@@ -37,5 +37,4 @@
     name: keepalived
     state: restarted
   when:
-    - keepalivedConfigured.changed
     - inventory_hostname in groups['kube-master']

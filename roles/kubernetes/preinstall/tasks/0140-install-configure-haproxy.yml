@@ -18,3 +18,11 @@
   register: haproxyConfigured
   when:
     - inventory_hostname in groups['kube-master']
+
+- name: restart haproxy
+  ansible.builtin.systemd:
+    name: haproxy
+    state: restarted
+  when:
+    - inventory_hostname in groups['kube-master']
+
