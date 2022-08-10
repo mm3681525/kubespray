@@ -1,0 +1,4779 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Check 2.9.0 <= Ansible version < 2.12.0] *********************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check Ansible version > 2.10.11 when using ansible 2.10] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check that python netaddr is installed] **********************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check that jinja is not too old (install via pip)] ***********************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY [Add kube-master nodes to kube_control_plane] *****************************
+
+TASK [add nodes to kube_control_plane group] ***********************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+PLAY [Add kube-node nodes to kube_node] ****************************************
+
+TASK [add nodes to kube_node group] ********************************************
+changed: [node5]
+changed: [node4]
+changed: [node6]
+
+PLAY [Add k8s-cluster nodes to k8s_cluster] ************************************
+
+TASK [add nodes to k8s_cluster group] ******************************************
+changed: [node4]
+changed: [node5]
+changed: [node6]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+PLAY [Add calico-rr nodes to calico_rr] ****************************************
+skipping: no hosts matched
+
+PLAY [Add no-floating nodes to no_floating] ************************************
+skipping: no hosts matched
+
+PLAY [bastion[0]] **************************************************************
+skipping: no hosts matched
+
+PLAY [k8s_cluster:etcd] ********************************************************
+
+TASK [kubespray-defaults : Configure defaults] *********************************
+ok: [node4] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node5] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node6] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node1] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node2] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node3] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+
+TASK [bootstrap-os : Fetch /etc/os-release] ************************************
+ok: [node4]
+ok: [node1]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/bootstrap-os/tasks/bootstrap-debian.yml for node4, node5, node6, node1, node2, node3
+
+TASK [bootstrap-os : Check if bootstrap is needed] *****************************
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [bootstrap-os : Check http::proxy in apt configuration files] *************
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [bootstrap-os : Check https::proxy in apt configuration files] ************
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [bootstrap-os : Set the ansible_python_interpreter fact] ******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [bootstrap-os : Install dbus for the hostname module] *********************
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node6]
+ok: [node4]
+ok: [node3]
+
+TASK [bootstrap-os : Create remote_tmp for it is used by another module] *******
+changed: [node1]
+ok: [node5]
+ok: [node4]
+ok: [node6]
+changed: [node2]
+changed: [node3]
+
+TASK [bootstrap-os : Gather host facts to get ansible_os_family] ***************
+ok: [node6]
+ok: [node5]
+ok: [node2]
+ok: [node4]
+ok: [node1]
+ok: [node3]
+
+TASK [bootstrap-os : Assign inventory name to unconfigured hostnames (non-CoreOS, non-Flatcar, Suse and ClearLinux, non-Fedora)] ***
+changed: [node2]
+changed: [node1]
+changed: [node3]
+changed: [node5]
+changed: [node6]
+changed: [node4]
+
+TASK [bootstrap-os : Ensure bash_completion.d folder exists] *******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node6]
+ok: [node5]
+ok: [node4]
+
+PLAY [Gather facts] ************************************************************
+
+TASK [Gather minimal facts] ****************************************************
+ok: [node2]
+ok: [node1]
+ok: [node3]
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [Gather necessary facts (network)] ****************************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [Gather necessary facts (hardware)] ***************************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+PLAY [k8s_cluster:etcd] ********************************************************
+
+TASK [kubespray-defaults : Configure defaults] *********************************
+ok: [node4] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node5] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node6] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node1] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node2] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node3] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+
+TASK [kubespray-defaults : create fallback_ips_base] ***************************
+ok: [node4 -> localhost]
+
+TASK [kubespray-defaults : set fallback_ips] ***********************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node3]
+ok: [node2]
+
+TASK [adduser : User | Create User Group] **************************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+ok: [node5]
+ok: [node4]
+ok: [node6]
+
+TASK [adduser : User | Create User] ********************************************
+changed: [node2]
+changed: [node1]
+changed: [node3]
+ok: [node5]
+ok: [node4]
+ok: [node6]
+
+TASK [kubernetes/preinstall : Remove swapfile from /etc/fstab] *****************
+ok: [node2] => (item=swap)
+ok: [node1] => (item=swap)
+changed: [node2] => (item=none)
+changed: [node1] => (item=none)
+ok: [node3] => (item=swap)
+changed: [node3] => (item=none)
+ok: [node6] => (item=swap)
+ok: [node4] => (item=swap)
+ok: [node5] => (item=swap)
+ok: [node4] => (item=none)
+ok: [node5] => (item=none)
+ok: [node6] => (item=none)
+
+TASK [kubernetes/preinstall : check swap] **************************************
+ok: [node1]
+ok: [node3]
+ok: [node2]
+ok: [node6]
+ok: [node5]
+ok: [node4]
+
+TASK [kubernetes/preinstall : Disable swap] ************************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [kubernetes/preinstall : Stop if either kube_control_plane or kube_node group is empty] ***
+ok: [node4] => (item=kube_control_plane) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": "kube_control_plane",
+    "msg": "All assertions passed"
+}
+ok: [node4] => (item=kube_node) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": "kube_node",
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if etcd group is empty in external etcd mode] ***
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if non systemd OS type] *********************
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if unknown OS] ******************************
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if unknown network plugin] ******************
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if supported Calico versions] ***************
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if unsupported version of Kubernetes] *******
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if known booleans are set as strings (Use JSON format on CLI: -e "{'key': true }")] ***
+ok: [node4] => (item={'name': 'download_run_once', 'value': False}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "name": "download_run_once",
+        "value": false
+    },
+    "msg": "All assertions passed"
+}
+ok: [node4] => (item={'name': 'deploy_netchecker', 'value': False}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "name": "deploy_netchecker",
+        "value": false
+    },
+    "msg": "All assertions passed"
+}
+ok: [node4] => (item={'name': 'download_always_pull', 'value': False}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "name": "download_always_pull",
+        "value": false
+    },
+    "msg": "All assertions passed"
+}
+ok: [node4] => (item={'name': 'helm_enabled', 'value': False}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "name": "helm_enabled",
+        "value": false
+    },
+    "msg": "All assertions passed"
+}
+ok: [node4] => (item={'name': 'openstack_lbaas_enabled', 'value': False}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "name": "openstack_lbaas_enabled",
+        "value": false
+    },
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if even number of etcd hosts] ***************
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if memory is too small for masters] *********
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if memory is too small for nodes] ***********
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop when dynamic_kubelet_configuration enabled for kubernetes >= 1.22] ***
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if ip var does not match local ips] *********
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if RBAC is not enabled when dashboard is enabled] ***
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if RBAC and anonymous-auth are not enabled when insecure port is disabled] ***
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if bad hostname] ****************************
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node5] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node6] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Get current calico cluster version] **************
+ok: [node4]
+
+TASK [kubernetes/preinstall : Check that kube_service_addresses is a network range] ***
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Check that kube_pods_subnet is a network range] ***
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Check that kube_pods_subnet does not collide with kube_service_addresses] ***
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if unknown dns mode] ************************
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if unknown kube proxy mode] *****************
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if unknown cert_management] *****************
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if unknown resolvconf_mode] *****************
+ok: [node4] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : Stop if etcd deployment type is not host or docker] ***
+ok: [node1] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node2] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [node3] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [kubernetes/preinstall : check if booted with ostree] *********************
+ok: [node2]
+ok: [node1]
+ok: [node3]
+ok: [node5]
+ok: [node6]
+ok: [node4]
+
+TASK [kubernetes/preinstall : set is_fedora_coreos] ****************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [kubernetes/preinstall : set is_fedora_coreos] ****************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : check resolvconf] ********************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+TASK [kubernetes/preinstall : check existence of /etc/resolvconf/resolv.conf.d] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+TASK [kubernetes/preinstall : check status of /etc/resolv.conf] ****************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [kubernetes/preinstall : get content of /etc/resolv.conf] *****************
+ok: [node2]
+ok: [node1]
+ok: [node3]
+ok: [node5]
+ok: [node6]
+ok: [node4]
+
+TASK [kubernetes/preinstall : get currently configured nameservers] ************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : check systemd-resolved] **************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+TASK [kubernetes/preinstall : set dns facts] ***********************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : check if kubelet is configured] ******************
+ok: [node2]
+ok: [node1]
+ok: [node3]
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [kubernetes/preinstall : check if early DNS configuration stage] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [kubernetes/preinstall : target resolv.conf files] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : check if /etc/dhclient.conf exists] **************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node5]
+ok: [node4]
+ok: [node6]
+
+TASK [kubernetes/preinstall : check if /etc/dhcp/dhclient.conf exists] *********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [kubernetes/preinstall : target dhclient conf file for /etc/dhcp/dhclient.conf] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : target dhclient hook file for Debian family] *****
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : generate search domains to resolvconf] ***********
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : pick coredns cluster IP or default resolver] *****
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [kubernetes/preinstall : generate nameservers to resolvconf] **************
+ok: [node4]
+ok: [node5]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : gather os specific variables] ********************
+ok: [node4] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/preinstall/vars/../vars/ubuntu.yml)
+ok: [node5] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/preinstall/vars/../vars/ubuntu.yml)
+ok: [node6] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/preinstall/vars/../vars/ubuntu.yml)
+ok: [node1] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/preinstall/vars/../vars/ubuntu.yml)
+ok: [node2] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/preinstall/vars/../vars/ubuntu.yml)
+ok: [node3] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/preinstall/vars/../vars/ubuntu.yml)
+
+TASK [kubernetes/preinstall : check /usr readonly] *****************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+TASK [kubernetes/preinstall : Create kubernetes directories] *******************
+changed: [node2] => (item=/etc/kubernetes)
+changed: [node1] => (item=/etc/kubernetes)
+changed: [node1] => (item=/etc/kubernetes/ssl)
+changed: [node2] => (item=/etc/kubernetes/ssl)
+changed: [node2] => (item=/etc/kubernetes/manifests)
+changed: [node1] => (item=/etc/kubernetes/manifests)
+changed: [node2] => (item=/usr/local/bin/kubernetes-scripts)
+changed: [node1] => (item=/usr/local/bin/kubernetes-scripts)
+changed: [node2] => (item=/usr/libexec/kubernetes/kubelet-plugins/volume/exec)
+changed: [node1] => (item=/usr/libexec/kubernetes/kubelet-plugins/volume/exec)
+changed: [node3] => (item=/etc/kubernetes)
+changed: [node3] => (item=/etc/kubernetes/ssl)
+changed: [node3] => (item=/etc/kubernetes/manifests)
+changed: [node3] => (item=/usr/local/bin/kubernetes-scripts)
+changed: [node3] => (item=/usr/libexec/kubernetes/kubelet-plugins/volume/exec)
+ok: [node4] => (item=/etc/kubernetes)
+ok: [node6] => (item=/etc/kubernetes)
+ok: [node5] => (item=/etc/kubernetes)
+ok: [node4] => (item=/etc/kubernetes/ssl)
+ok: [node6] => (item=/etc/kubernetes/ssl)
+ok: [node5] => (item=/etc/kubernetes/ssl)
+ok: [node4] => (item=/etc/kubernetes/manifests)
+ok: [node6] => (item=/etc/kubernetes/manifests)
+ok: [node5] => (item=/etc/kubernetes/manifests)
+ok: [node4] => (item=/usr/local/bin/kubernetes-scripts)
+ok: [node6] => (item=/usr/local/bin/kubernetes-scripts)
+ok: [node5] => (item=/usr/local/bin/kubernetes-scripts)
+ok: [node4] => (item=/usr/libexec/kubernetes/kubelet-plugins/volume/exec)
+ok: [node6] => (item=/usr/libexec/kubernetes/kubelet-plugins/volume/exec)
+ok: [node5] => (item=/usr/libexec/kubernetes/kubelet-plugins/volume/exec)
+
+TASK [kubernetes/preinstall : Create other directories] ************************
+ok: [node1] => (item=/usr/local/bin)
+ok: [node2] => (item=/usr/local/bin)
+ok: [node3] => (item=/usr/local/bin)
+ok: [node4] => (item=/usr/local/bin)
+ok: [node5] => (item=/usr/local/bin)
+ok: [node6] => (item=/usr/local/bin)
+
+TASK [kubernetes/preinstall : Check if kubernetes kubeadm compat cert dir exists] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+TASK [kubernetes/preinstall : Create kubernetes kubeadm compat cert dir (kubernetes/kubeadm issue 1498)] ***
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [kubernetes/preinstall : Create cni directories] **************************
+changed: [node2] => (item=/etc/cni/net.d)
+changed: [node1] => (item=/etc/cni/net.d)
+changed: [node2] => (item=/opt/cni/bin)
+changed: [node1] => (item=/opt/cni/bin)
+changed: [node2] => (item=/var/lib/calico)
+changed: [node1] => (item=/var/lib/calico)
+changed: [node3] => (item=/etc/cni/net.d)
+changed: [node3] => (item=/opt/cni/bin)
+changed: [node3] => (item=/var/lib/calico)
+ok: [node4] => (item=/etc/cni/net.d)
+ok: [node5] => (item=/etc/cni/net.d)
+ok: [node6] => (item=/etc/cni/net.d)
+ok: [node4] => (item=/opt/cni/bin)
+ok: [node6] => (item=/opt/cni/bin)
+ok: [node5] => (item=/opt/cni/bin)
+ok: [node4] => (item=/var/lib/calico)
+ok: [node5] => (item=/var/lib/calico)
+ok: [node6] => (item=/var/lib/calico)
+
+TASK [kubernetes/preinstall : Write resolved.conf] *****************************
+changed: [node2]
+changed: [node1]
+changed: [node3]
+ok: [node6]
+ok: [node5]
+ok: [node4]
+
+TASK [kubernetes/preinstall : NetworkManager | Check if host has NetworkManager] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+TASK [kubernetes/preinstall : Update package management cache (APT)] ***********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [kubernetes/preinstall : ensure apt repository is enabled] ****************
+changed: [node1] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+changed: [node2] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+changed: [node3] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+changed: [node5] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+changed: [node6] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+changed: [node4] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+
+TASK [kubernetes/preinstall : Update common_required_pkgs with ipvsadm when kube_proxy_mode is ipvs] ***
+ok: [node4]
+ok: [node5]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : Install packages requirements] *******************
+ok: [node6]
+ok: [node5]
+changed: [node2]
+changed: [node1]
+ok: [node4]
+changed: [node3]
+
+TASK [kubernetes/preinstall : Stat sysctl file configuration] ******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [kubernetes/preinstall : Change sysctl file path to link source if linked] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : Make sure sysctl file path folder exists] ********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [kubernetes/preinstall : Enable ip forwarding] ****************************
+changed: [node2]
+changed: [node1]
+changed: [node3]
+ok: [node5]
+ok: [node4]
+ok: [node6]
+
+TASK [kubernetes/preinstall : Check if we need to set fs.may_detach_mounts] ****
+ok: [node1]
+ok: [node2]
+ok: [node3]
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+TASK [kubernetes/preinstall : Ensure kube-bench parameters are set] ************
+changed: [node1] => (item={'name': 'vm.overcommit_memory', 'value': 1})
+changed: [node2] => (item={'name': 'vm.overcommit_memory', 'value': 1})
+changed: [node2] => (item={'name': 'kernel.panic', 'value': 10})
+changed: [node1] => (item={'name': 'kernel.panic', 'value': 10})
+changed: [node2] => (item={'name': 'kernel.panic_on_oops', 'value': 1})
+changed: [node1] => (item={'name': 'kernel.panic_on_oops', 'value': 1})
+changed: [node3] => (item={'name': 'vm.overcommit_memory', 'value': 1})
+changed: [node3] => (item={'name': 'kernel.panic', 'value': 10})
+changed: [node3] => (item={'name': 'kernel.panic_on_oops', 'value': 1})
+ok: [node6] => (item={'name': 'vm.overcommit_memory', 'value': 1})
+ok: [node5] => (item={'name': 'vm.overcommit_memory', 'value': 1})
+ok: [node4] => (item={'name': 'vm.overcommit_memory', 'value': 1})
+ok: [node4] => (item={'name': 'kernel.panic', 'value': 10})
+ok: [node6] => (item={'name': 'kernel.panic', 'value': 10})
+ok: [node5] => (item={'name': 'kernel.panic', 'value': 10})
+ok: [node6] => (item={'name': 'kernel.panic_on_oops', 'value': 1})
+ok: [node5] => (item={'name': 'kernel.panic_on_oops', 'value': 1})
+ok: [node4] => (item={'name': 'kernel.panic_on_oops', 'value': 1})
+
+TASK [kubernetes/preinstall : Check dummy module] ******************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+changed: [node6]
+changed: [node4]
+changed: [node5]
+
+TASK [kubernetes/preinstall : Hosts | create list from inventory] **************
+ok: [node4 -> localhost]
+
+TASK [kubernetes/preinstall : Hosts | populate inventory into hosts file] ******
+changed: [node1]
+changed: [node2]
+changed: [node3]
+changed: [node5]
+changed: [node6]
+changed: [node4]
+
+TASK [kubernetes/preinstall : Hosts | populate kubernetes loadbalancer address into hosts file] ***
+changed: [node4]
+changed: [node5]
+changed: [node6]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [kubernetes/preinstall : Hosts | Retrieve hosts file content] *************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/preinstall : Hosts | Extract existing entries for localhost from hosts file] ***
+ok: [node4] => (item=127.0.0.1 localhost)
+ok: [node5] => (item=127.0.0.1 localhost)
+ok: [node6] => (item=127.0.0.1 localhost)
+ok: [node1] => (item=127.0.0.1 localhost)
+ok: [node4] => (item=::1     ip6-localhost ip6-loopback)
+ok: [node2] => (item=127.0.0.1 localhost)
+ok: [node5] => (item=::1     ip6-localhost ip6-loopback)
+ok: [node6] => (item=::1     ip6-localhost ip6-loopback)
+ok: [node1] => (item=::1     ip6-localhost ip6-loopback)
+ok: [node2] => (item=::1     ip6-localhost ip6-loopback)
+ok: [node4] => (item=127.0.0.1 k8s.gcr.io)
+ok: [node5] => (item=127.0.0.1 k8s.gcr.io)
+ok: [node6] => (item=127.0.0.1 k8s.gcr.io)
+ok: [node1] => (item=127.0.0.1 k8s.gcr.io)
+ok: [node2] => (item=127.0.0.1 k8s.gcr.io)
+ok: [node3] => (item=127.0.0.1 localhost)
+ok: [node3] => (item=::1     ip6-localhost ip6-loopback)
+ok: [node3] => (item=127.0.0.1 k8s.gcr.io)
+
+TASK [kubernetes/preinstall : Hosts | Update target hosts file entries dict with required entries] ***
+ok: [node4] => (item={'key': '127.0.0.1', 'value': {'expected': ['localhost', 'localhost.localdomain']}})
+ok: [node4] => (item={'key': '::1', 'value': {'expected': ['localhost6', 'localhost6.localdomain'], 'unexpected': ['localhost', 'localhost.localdomain']}})
+ok: [node5] => (item={'key': '127.0.0.1', 'value': {'expected': ['localhost', 'localhost.localdomain']}})
+ok: [node5] => (item={'key': '::1', 'value': {'expected': ['localhost6', 'localhost6.localdomain'], 'unexpected': ['localhost', 'localhost.localdomain']}})
+ok: [node6] => (item={'key': '127.0.0.1', 'value': {'expected': ['localhost', 'localhost.localdomain']}})
+ok: [node1] => (item={'key': '127.0.0.1', 'value': {'expected': ['localhost', 'localhost.localdomain']}})
+ok: [node6] => (item={'key': '::1', 'value': {'expected': ['localhost6', 'localhost6.localdomain'], 'unexpected': ['localhost', 'localhost.localdomain']}})
+ok: [node1] => (item={'key': '::1', 'value': {'expected': ['localhost6', 'localhost6.localdomain'], 'unexpected': ['localhost', 'localhost.localdomain']}})
+ok: [node2] => (item={'key': '127.0.0.1', 'value': {'expected': ['localhost', 'localhost.localdomain']}})
+ok: [node2] => (item={'key': '::1', 'value': {'expected': ['localhost6', 'localhost6.localdomain'], 'unexpected': ['localhost', 'localhost.localdomain']}})
+ok: [node3] => (item={'key': '127.0.0.1', 'value': {'expected': ['localhost', 'localhost.localdomain']}})
+ok: [node3] => (item={'key': '::1', 'value': {'expected': ['localhost6', 'localhost6.localdomain'], 'unexpected': ['localhost', 'localhost.localdomain']}})
+
+TASK [kubernetes/preinstall : Hosts | Update (if necessary) hosts file] ********
+changed: [node4] => (item={'key': '127.0.0.1', 'value': ['k8s.gcr.io', 'localhost', 'localhost.localdomain']})
+changed: [node1] => (item={'key': '127.0.0.1', 'value': ['k8s.gcr.io', 'localhost', 'localhost.localdomain']})
+changed: [node6] => (item={'key': '127.0.0.1', 'value': ['k8s.gcr.io', 'localhost', 'localhost.localdomain']})
+changed: [node5] => (item={'key': '127.0.0.1', 'value': ['k8s.gcr.io', 'localhost', 'localhost.localdomain']})
+changed: [node2] => (item={'key': '127.0.0.1', 'value': ['k8s.gcr.io', 'localhost', 'localhost.localdomain']})
+changed: [node4] => (item={'key': '::1', 'value': ['ip6-localhost', 'ip6-loopback', 'localhost6', 'localhost6.localdomain']})
+changed: [node6] => (item={'key': '::1', 'value': ['ip6-localhost', 'ip6-loopback', 'localhost6', 'localhost6.localdomain']})
+changed: [node5] => (item={'key': '::1', 'value': ['ip6-localhost', 'ip6-loopback', 'localhost6', 'localhost6.localdomain']})
+changed: [node2] => (item={'key': '::1', 'value': ['ip6-localhost', 'ip6-loopback', 'localhost6', 'localhost6.localdomain']})
+changed: [node1] => (item={'key': '::1', 'value': ['ip6-localhost', 'ip6-loopback', 'localhost6', 'localhost6.localdomain']})
+changed: [node3] => (item={'key': '127.0.0.1', 'value': ['k8s.gcr.io', 'localhost', 'localhost.localdomain']})
+changed: [node3] => (item={'key': '::1', 'value': ['ip6-localhost', 'ip6-loopback', 'localhost6', 'localhost6.localdomain']})
+
+TASK [kubernetes/preinstall : Update facts] ************************************
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node5]
+ok: [node3]
+
+TASK [kubernetes/preinstall : Configure dhclient to supersede search/domain/nameservers] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [kubernetes/preinstall : Configure dhclient hooks for resolv.conf (non-RH)] ***
+ok: [node4]
+ok: [node6]
+changed: [node2]
+changed: [node1]
+ok: [node5]
+changed: [node3]
+
+RUNNING HANDLER [kubernetes/preinstall : Preinstall | propagate resolvconf to k8s components] ***
+changed: [node1]
+changed: [node3]
+changed: [node2]
+
+RUNNING HANDLER [kubernetes/preinstall : Preinstall | kube-apiserver configured] ***
+ok: [node1]
+ok: [node3]
+ok: [node2]
+
+RUNNING HANDLER [kubernetes/preinstall : Preinstall | kube-controller configured] ***
+ok: [node1]
+ok: [node3]
+ok: [node2]
+
+RUNNING HANDLER [kubernetes/preinstall : Preinstall | restart kube-apiserver docker] ***
+changed: [node1]
+changed: [node3]
+changed: [node2]
+
+RUNNING HANDLER [kubernetes/preinstall : Preinstall | Restart systemd-resolved] ***
+changed: [node2]
+changed: [node3]
+changed: [node1]
+
+TASK [kubernetes/preinstall : Check if we are running inside a Azure VM] *******
+ok: [node4]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node5]
+ok: [node3]
+
+TASK [kubernetes/preinstall : install keepalived] ******************************
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+TASK [kubernetes/preinstall : configure keepalived] ****************************
+changed: [node1]
+
+TASK [kubernetes/preinstall : configure keepalived] ****************************
+changed: [node2]
+
+TASK [kubernetes/preinstall : configure keepalived] ****************************
+changed: [node3]
+
+TASK [kubernetes/preinstall : restart keepalived] ******************************
+changed: [node3]
+
+TASK [kubernetes/preinstall : install haproxy] *********************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [kubernetes/preinstall : copy haproxy configuration] **********************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [container-engine/containerd-common : containerd-common | check if fedora coreos] ***
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node5]
+ok: [node2]
+ok: [node3]
+
+TASK [container-engine/containerd-common : containerd-common | set is_ostree] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [container-engine/containerd-common : containerd-common | gather os specific variables] ***
+ok: [node4] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node6] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node5] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node3] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node1] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node2] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+
+TASK [container-engine/docker : check if fedora coreos] ************************
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node5]
+ok: [node2]
+ok: [node3]
+
+TASK [container-engine/docker : set is_ostree] *********************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [container-engine/docker : gather os specific variables] ******************
+ok: [node4] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node6] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node5] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node2] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node1] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+ok: [node3] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/container-engine/docker/vars/../vars/ubuntu.yml)
+
+TASK [container-engine/docker : Ensure old versions of Docker are not installed. | Debian] ***
+ok: [node4]
+ok: [node5]
+ok: [node2]
+ok: [node6]
+ok: [node1]
+ok: [node3]
+
+TASK [container-engine/docker : ensure docker-ce repository public key is installed] ***
+ok: [node6] => (item=9DC858229FC7DD38854AE2D88D81803C0EBFCD88)
+ok: [node4] => (item=9DC858229FC7DD38854AE2D88D81803C0EBFCD88)
+ok: [node5] => (item=9DC858229FC7DD38854AE2D88D81803C0EBFCD88)
+changed: [node2] => (item=9DC858229FC7DD38854AE2D88D81803C0EBFCD88)
+changed: [node1] => (item=9DC858229FC7DD38854AE2D88D81803C0EBFCD88)
+changed: [node3] => (item=9DC858229FC7DD38854AE2D88D81803C0EBFCD88)
+
+TASK [container-engine/docker : ensure docker-ce repository is enabled] ********
+ok: [node5] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+ok: [node4] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+ok: [node6] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+ok: [node1] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+ok: [node2] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+ok: [node3] => (item=deb [trusted=yes] http://10.140.79.120:8081/apt-repo ./
+)
+
+TASK [container-engine/docker : Remove dpkg hold] ******************************
+ok: [node4] => (item=containerd.io)
+ok: [node5] => (item=containerd.io)
+ok: [node6] => (item=containerd.io)
+ok: [node1] => (item=containerd.io)
+ok: [node2] => (item=containerd.io)
+ok: [node5] => (item=docker-ce)
+ok: [node4] => (item=docker-ce)
+ok: [node1] => (item=docker-ce)
+ok: [node6] => (item=docker-ce)
+ok: [node2] => (item=docker-ce)
+ok: [node5] => (item=docker-ce-cli)
+ok: [node4] => (item=docker-ce-cli)
+ok: [node1] => (item=docker-ce-cli)
+ok: [node6] => (item=docker-ce-cli)
+ok: [node2] => (item=docker-ce-cli)
+ok: [node3] => (item=containerd.io)
+ok: [node3] => (item=docker-ce)
+ok: [node3] => (item=docker-ce-cli)
+
+TASK [container-engine/docker : ensure docker packages are installed] **********
+changed: [node2]
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node1]
+changed: [node3]
+
+TASK [container-engine/docker : Creating a daemon json] ************************
+changed: [node4]
+changed: [node5]
+changed: [node6]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [container-engine/docker : Tell Debian hosts not to change the docker version with apt upgrade] ***
+ok: [node4] => (item=containerd.io)
+ok: [node5] => (item=containerd.io)
+ok: [node6] => (item=containerd.io)
+ok: [node1] => (item=containerd.io)
+ok: [node2] => (item=containerd.io)
+ok: [node4] => (item=docker-ce)
+ok: [node5] => (item=docker-ce)
+ok: [node6] => (item=docker-ce)
+ok: [node2] => (item=docker-ce)
+ok: [node1] => (item=docker-ce)
+ok: [node5] => (item=docker-ce-cli)
+ok: [node4] => (item=docker-ce-cli)
+ok: [node6] => (item=docker-ce-cli)
+ok: [node2] => (item=docker-ce-cli)
+ok: [node1] => (item=docker-ce-cli)
+ok: [node3] => (item=containerd.io)
+ok: [node3] => (item=docker-ce)
+ok: [node3] => (item=docker-ce-cli)
+
+RUNNING HANDLER [container-engine/docker : restart docker] *********************
+changed: [node2]
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node1]
+changed: [node3]
+
+RUNNING HANDLER [container-engine/docker : Docker | reload systemd] ************
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node4]
+ok: [node2]
+ok: [node3]
+
+RUNNING HANDLER [container-engine/docker : Docker | reload docker] *************
+changed: [node5]
+changed: [node2]
+changed: [node4]
+changed: [node1]
+changed: [node6]
+changed: [node3]
+
+RUNNING HANDLER [container-engine/docker : Docker | wait for docker] ***********
+changed: [node5]
+changed: [node2]
+changed: [node4]
+changed: [node1]
+changed: [node6]
+changed: [node3]
+
+TASK [container-engine/docker : Create docker service systemd directory if it doesn't exist] ***
+changed: [node4]
+changed: [node6]
+changed: [node5]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [container-engine/docker : get systemd version] ***************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [container-engine/docker : Write docker.service systemd file] *************
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+TASK [container-engine/docker : Write docker options systemd drop-in] **********
+changed: [node4]
+changed: [node1]
+changed: [node5]
+changed: [node2]
+changed: [node6]
+changed: [node3]
+
+RUNNING HANDLER [container-engine/docker : restart docker] *********************
+changed: [node5]
+changed: [node6]
+changed: [node4]
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+RUNNING HANDLER [container-engine/docker : Docker | reload systemd] ************
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+RUNNING HANDLER [container-engine/docker : Docker | reload docker] *************
+changed: [node5]
+changed: [node6]
+changed: [node4]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+RUNNING HANDLER [container-engine/docker : Docker | wait for docker] ***********
+changed: [node5]
+changed: [node6]
+changed: [node2]
+changed: [node4]
+changed: [node1]
+changed: [node3]
+
+TASK [container-engine/docker : ensure docker service is started and enabled] ***
+ok: [node4] => (item=docker)
+ok: [node6] => (item=docker)
+ok: [node5] => (item=docker)
+ok: [node1] => (item=docker)
+ok: [node2] => (item=docker)
+ok: [node3] => (item=docker)
+
+TASK [container-engine/docker : Log into private registry] *********************
+changed: [node4]
+changed: [node5]
+changed: [node6]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [download : prep_download | Set a few facts] ******************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : prep_download | Register docker images info] ******************
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : prep_download | Create staging directory on remote node] ******
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/prep_kubeadm_images.yml for node1, node2, node3
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_file.yml for node3, node1, node2
+
+TASK [download : download_file | Starting download of file] ********************
+ok: [node3] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm"
+}
+ok: [node2] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm"
+}
+ok: [node1] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm"
+}
+
+TASK [download : download_file | Set pathname of cached file] ******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Create dest directory on node] ****************
+ok: [node2]
+ok: [node3]
+ok: [node1]
+
+TASK [download : download_file | Download item] ********************************
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+changed: [node2 -> node2]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/extract_file.yml for node1, node2, node3
+
+TASK [download : prep_kubeadm_images | Create kubeadm config] ******************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [download : prep_kubeadm_images | Copy kubeadm binary from download dir to system path] ***
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [download : prep_kubeadm_images | Set kubeadm binary permissions] *********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : prep_kubeadm_images | Generate list of required images] *******
+ok: [node1]
+
+TASK [download : prep_kubeadm_images | Parse list of images] *******************
+ok: [node1] => (item=10.140.79.120:5000/kube-apiserver:v1.22.0)
+ok: [node1] => (item=10.140.79.120:5000/kube-controller-manager:v1.22.0)
+ok: [node1] => (item=10.140.79.120:5000/kube-scheduler:v1.22.0)
+ok: [node1] => (item=10.140.79.120:5000/kube-proxy:v1.22.0)
+
+TASK [download : prep_kubeadm_images | Convert list of images to dict for later use] ***
+ok: [node1]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_file.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'cni', 'value': {'enabled': True, 'file': True, 'version': 'v1.0.1', 'dest': '/tmp/releases/cni-plugins-linux-amd64-v1.0.1.tgz', 'sha256': '5238fbb2767cbf6aae736ad97a7aa29167525dcd405196dfbc064672a730d3cf', 'url': 'http://10.140.79.120:8081/k8s/kubernetes/cni/cni-plugins-linux-amd64-v1.0.1.tgz', 'unarchive': False, 'owner': 'root', 'mode': '0755', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_file.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'kubeadm', 'value': {'enabled': True, 'file': True, 'version': 'v1.22.0', 'dest': '/tmp/releases/kubeadm-v1.22.0-amd64', 'sha256': '90a48b92a57ff6aef63ff409e2feda0713ca926b2cd243fe7e88a84c483456cc', 'url': 'http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm', 'unarchive': False, 'owner': 'root', 'mode': '0755', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_file.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'kubelet', 'value': {'enabled': True, 'file': True, 'version': 'v1.22.0', 'dest': '/tmp/releases/kubelet-v1.22.0-amd64', 'sha256': 'fec5c596f7f815f17f5d7d955e9707df1ef02a2ca5e788b223651f83376feb7f', 'url': 'http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubelet', 'unarchive': False, 'owner': 'root', 'mode': '0755', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_file.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'calicoctl', 'value': {'enabled': True, 'file': True, 'version': 'v3.20.3', 'dest': '/tmp/releases/calicoctl', 'sha256': '29bec97b1dfc135b830b0cbfd3dfe216f00e97e9e6ef08e620d81d4a09db6393', 'url': 'http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3/calicoctl-linux-amd64', 'unarchive': False, 'owner': 'root', 'mode': '0755', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'calico_node', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/calico/node', 'tag': 'v3.20.3', 'sha256': '', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'calico_cni', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/calico/cni', 'tag': 'v3.20.3', 'sha256': '', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'calico_flexvol', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/calico/pod2daemon-flexvol', 'tag': 'v3.20.3', 'sha256': '', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'calico_policy', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/calico/kube-controllers', 'tag': 'v3.20.3', 'sha256': '', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'pod_infra', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/pause', 'tag': '3.3', 'sha256': '', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'nodelocaldns', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/dns/k8s-dns-node-cache', 'tag': '1.21.1', 'sha256': '', 'groups': ['k8s_cluster']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4 => (item={'key': 'ingress_nginx_controller', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/ingress-nginx/controller', 'tag': 'v1.0.4', 'sha256': '', 'groups': ['kube_node']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'kubeadm_kube-apiserver', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/kube-apiserver', 'tag': 'v1.22.0', 'groups': 'k8s_cluster'}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'kubeadm_kube-controller-manager', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/kube-controller-manager', 'tag': 'v1.22.0', 'groups': 'k8s_cluster'}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'kubeadm_kube-scheduler', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/kube-scheduler', 'tag': 'v1.22.0', 'groups': 'k8s_cluster'}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node6, node5, node4, node1, node2, node3 => (item={'key': 'kubeadm_kube-proxy', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/kube-proxy', 'tag': 'v1.22.0', 'groups': 'k8s_cluster'}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_file.yml for node1, node2, node3 => (item={'key': 'etcd', 'value': {'container': False, 'file': True, 'enabled': True, 'version': 'v3.5.0', 'dest': '/tmp/releases/etcd-v3.5.0-linux-amd64.tar.gz', 'repo': '10.140.79.120:5000/coreos/etcd', 'tag': 'v3.5.0', 'sha256': '864baa0437f8368e0713d44b83afe21dce1fb4ee7dae4ca0f9dd5f0df22d01c4', 'url': 'http://10.140.79.120:8081/k8s/kubernetes/etcd/etcd-v3.5.0-linux-amd64.tar.gz', 'unarchive': True, 'owner': 'root', 'mode': '0755', 'groups': ['etcd']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_file.yml for node1, node2, node3 => (item={'key': 'kubectl', 'value': {'enabled': True, 'file': True, 'version': 'v1.22.0', 'dest': '/tmp/releases/kubectl-v1.22.0-amd64', 'sha256': '703e70d49b82271535bc66bc7bd469a58c11d47f188889bd37101c9772f14fa1', 'url': 'http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubectl', 'unarchive': False, 'owner': 'root', 'mode': '0755', 'groups': ['kube_control_plane']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_file.yml for node1, node2, node3 => (item={'key': 'calico_crds', 'value': {'file': True, 'enabled': True, 'version': 'v3.20.3', 'dest': '/tmp/releases/calico-v3.20.3-kdd-crds/v3.20.3.tar.gz', 'sha256': '2a3a5cbe05c60fa2fc850252c4eecfa36dd6629191ed805eea31f9b5c740bc4c', 'url': 'http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3.tar.gz', 'unarchive': True, 'unarchive_extra_opts': ['--strip=6', '--wildcards', '*/_includes/charts/calico/crds/kdd/'], 'owner': 'root', 'mode': '0755', 'groups': ['kube_control_plane']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node1, node2, node3 => (item={'key': 'coredns', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/coredns/coredns', 'tag': 'v1.8.0', 'sha256': '', 'groups': ['kube_control_plane']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node1, node2, node3 => (item={'key': 'dnsautoscaler', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/cpa/cluster-proportional-autoscaler-amd64', 'tag': '1.8.5', 'sha256': '', 'groups': ['kube_control_plane']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node1, node2, node3 => (item={'key': 'metrics_server', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/metrics-server/metrics-server', 'tag': 'v0.5.0', 'sha256': '', 'groups': ['kube_control_plane']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node1, node2, node3 => (item={'key': 'addon_resizer', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/addon-resizer', 'tag': '1.8.11', 'sha256': '', 'groups': ['kube_control_plane']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node1, node2, node3 => (item={'key': 'dashboard', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/kubernetesui/dashboard-amd64', 'tag': 'v2.4.0', 'sha256': '', 'groups': ['kube_control_plane']}})
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/download_container.yml for node1, node2, node3 => (item={'key': 'dashboard_metrics_scrapper', 'value': {'enabled': True, 'container': True, 'repo': '10.140.79.120:5000/kubernetesui/metrics-scraper', 'tag': 'v1.0.7', 'sha256': '', 'groups': ['kube_control_plane']}})
+
+TASK [download : download_file | Starting download of file] ********************
+ok: [node4] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/cni/cni-plugins-linux-amd64-v1.0.1.tgz"
+}
+ok: [node5] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/cni/cni-plugins-linux-amd64-v1.0.1.tgz"
+}
+ok: [node6] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/cni/cni-plugins-linux-amd64-v1.0.1.tgz"
+}
+ok: [node1] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/cni/cni-plugins-linux-amd64-v1.0.1.tgz"
+}
+ok: [node2] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/cni/cni-plugins-linux-amd64-v1.0.1.tgz"
+}
+ok: [node3] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/cni/cni-plugins-linux-amd64-v1.0.1.tgz"
+}
+
+TASK [download : download_file | Set pathname of cached file] ******************
+ok: [node4]
+ok: [node5]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Create dest directory on node] ****************
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Download item] ********************************
+changed: [node4 -> node4]
+changed: [node1 -> node1]
+changed: [node5 -> node5]
+changed: [node6 -> node6]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/extract_file.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : download_file | Starting download of file] ********************
+ok: [node4] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm"
+}
+ok: [node5] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm"
+}
+ok: [node6] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm"
+}
+ok: [node1] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm"
+}
+ok: [node2] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm"
+}
+ok: [node3] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubeadm"
+}
+
+TASK [download : download_file | Set pathname of cached file] ******************
+ok: [node4]
+ok: [node5]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Create dest directory on node] ****************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Download item] ********************************
+ok: [node1 -> node1]
+ok: [node2 -> node2]
+changed: [node4 -> node4]
+changed: [node5 -> node5]
+changed: [node6 -> node6]
+ok: [node3 -> node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/extract_file.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : download_file | Starting download of file] ********************
+ok: [node4] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubelet"
+}
+ok: [node5] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubelet"
+}
+ok: [node6] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubelet"
+}
+ok: [node1] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubelet"
+}
+ok: [node3] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubelet"
+}
+ok: [node2] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubelet"
+}
+
+TASK [download : download_file | Set pathname of cached file] ******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Create dest directory on node] ****************
+ok: [node5]
+ok: [node4]
+ok: [node2]
+ok: [node6]
+ok: [node1]
+ok: [node3]
+
+TASK [download : download_file | Download item] ********************************
+changed: [node5 -> node5]
+changed: [node4 -> node4]
+changed: [node6 -> node6]
+changed: [node2 -> node2]
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/extract_file.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : download_file | Starting download of file] ********************
+ok: [node4] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3/calicoctl-linux-amd64"
+}
+ok: [node5] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3/calicoctl-linux-amd64"
+}
+ok: [node6] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3/calicoctl-linux-amd64"
+}
+ok: [node1] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3/calicoctl-linux-amd64"
+}
+ok: [node2] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3/calicoctl-linux-amd64"
+}
+ok: [node3] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3/calicoctl-linux-amd64"
+}
+
+TASK [download : download_file | Set pathname of cached file] ******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Create dest directory on node] ****************
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Download item] ********************************
+changed: [node5 -> node5]
+changed: [node4 -> node4]
+changed: [node6 -> node6]
+changed: [node2 -> node2]
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/extract_file.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/calico/node"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/calico/node"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/calico/node"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/calico/node"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/calico/node"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/calico/node"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node3]
+ok: [node2]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/calico/node:v3.20.3 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/calico/node:v3.20.3 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/calico/node:v3.20.3 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/calico/node:v3.20.3 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/calico/node:v3.20.3 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/calico/node:v3.20.3 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node6 -> node6]
+changed: [node4 -> node4]
+changed: [node2 -> node2]
+changed: [node5 -> node5]
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node5]
+ok: [node4]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/calico/cni"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/calico/cni"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/calico/cni"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/calico/cni"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/calico/cni"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/calico/cni"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/calico/cni:v3.20.3 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/calico/cni:v3.20.3 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/calico/cni:v3.20.3 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/calico/cni:v3.20.3 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/calico/cni:v3.20.3 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/calico/cni:v3.20.3 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node5 -> node5]
+changed: [node4 -> node4]
+changed: [node6 -> node6]
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/calico/pod2daemon-flexvol"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/calico/pod2daemon-flexvol"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/calico/pod2daemon-flexvol"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/calico/pod2daemon-flexvol"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/calico/pod2daemon-flexvol"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/calico/pod2daemon-flexvol"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node5]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node4]
+ok: [node3]
+ok: [node2]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/calico/pod2daemon-flexvol:v3.20.3 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/calico/pod2daemon-flexvol:v3.20.3 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/calico/pod2daemon-flexvol:v3.20.3 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/calico/pod2daemon-flexvol:v3.20.3 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/calico/pod2daemon-flexvol:v3.20.3 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/calico/pod2daemon-flexvol:v3.20.3 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node5 -> node5]
+changed: [node4 -> node4]
+changed: [node6 -> node6]
+changed: [node2 -> node2]
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/calico/kube-controllers"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/calico/kube-controllers"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/calico/kube-controllers"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/calico/kube-controllers"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/calico/kube-controllers"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/calico/kube-controllers"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/calico/kube-controllers:v3.20.3 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/calico/kube-controllers:v3.20.3 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/calico/kube-controllers:v3.20.3 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/calico/kube-controllers:v3.20.3 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/calico/kube-controllers:v3.20.3 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/calico/kube-controllers:v3.20.3 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node5 -> node5]
+changed: [node4 -> node4]
+changed: [node6 -> node6]
+changed: [node2 -> node2]
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/pause"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/pause"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/pause"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/pause"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/pause"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/pause"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/pause:3.3 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/pause:3.3 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/pause:3.3 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/pause:3.3 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/pause:3.3 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/pause:3.3 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node4 -> node4]
+changed: [node5 -> node5]
+changed: [node6 -> node6]
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/dns/k8s-dns-node-cache"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/dns/k8s-dns-node-cache"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/dns/k8s-dns-node-cache"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/dns/k8s-dns-node-cache"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/dns/k8s-dns-node-cache"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/dns/k8s-dns-node-cache"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/dns/k8s-dns-node-cache:1.21.1 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/dns/k8s-dns-node-cache:1.21.1 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/dns/k8s-dns-node-cache:1.21.1 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/dns/k8s-dns-node-cache:1.21.1 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/dns/k8s-dns-node-cache:1.21.1 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/dns/k8s-dns-node-cache:1.21.1 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node5 -> node5]
+changed: [node6 -> node6]
+changed: [node4 -> node4]
+changed: [node2 -> node2]
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node4]
+ok: [node5]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/ingress-nginx/controller"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/ingress-nginx/controller"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/ingress-nginx/controller"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/ingress-nginx/controller:v1.0.4 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/ingress-nginx/controller:v1.0.4 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/ingress-nginx/controller:v1.0.4 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node5 -> node5]
+changed: [node6 -> node6]
+changed: [node4 -> node4]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node5]
+ok: [node4]
+ok: [node6]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/kube-apiserver"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/kube-apiserver"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/kube-apiserver"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/kube-apiserver"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/kube-apiserver"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/kube-apiserver"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/kube-apiserver:v1.22.0 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/kube-apiserver:v1.22.0 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/kube-apiserver:v1.22.0 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/kube-apiserver:v1.22.0 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/kube-apiserver:v1.22.0 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/kube-apiserver:v1.22.0 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node5 -> node5]
+changed: [node4 -> node4]
+changed: [node6 -> node6]
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node4]
+ok: [node5]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/kube-controller-manager"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/kube-controller-manager"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/kube-controller-manager"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/kube-controller-manager"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/kube-controller-manager"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/kube-controller-manager"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node4]
+ok: [node5]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/kube-controller-manager:v1.22.0 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/kube-controller-manager:v1.22.0 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/kube-controller-manager:v1.22.0 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/kube-controller-manager:v1.22.0 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/kube-controller-manager:v1.22.0 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/kube-controller-manager:v1.22.0 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node5 -> node5]
+changed: [node6 -> node6]
+changed: [node4 -> node4]
+changed: [node2 -> node2]
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/kube-scheduler"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/kube-scheduler"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/kube-scheduler"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/kube-scheduler"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/kube-scheduler"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/kube-scheduler"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/kube-scheduler:v1.22.0 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/kube-scheduler:v1.22.0 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/kube-scheduler:v1.22.0 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/kube-scheduler:v1.22.0 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/kube-scheduler:v1.22.0 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/kube-scheduler:v1.22.0 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node5 -> node5]
+changed: [node4 -> node4]
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node6 -> node6]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node4] => {
+    "msg": "10.140.79.120:5000/kube-proxy"
+}
+ok: [node6] => {
+    "msg": "10.140.79.120:5000/kube-proxy"
+}
+ok: [node5] => {
+    "msg": "10.140.79.120:5000/kube-proxy"
+}
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/kube-proxy"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/kube-proxy"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/kube-proxy"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node4]
+ok: [node6]
+ok: [node5]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node4, node5, node6, node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node4]
+ok: [node5]
+ok: [node1]
+ok: [node6]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node4] => {
+    "msg": "Pull 10.140.79.120:5000/kube-proxy:v1.22.0 required is: True"
+}
+ok: [node5] => {
+    "msg": "Pull 10.140.79.120:5000/kube-proxy:v1.22.0 required is: True"
+}
+ok: [node6] => {
+    "msg": "Pull 10.140.79.120:5000/kube-proxy:v1.22.0 required is: True"
+}
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/kube-proxy:v1.22.0 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/kube-proxy:v1.22.0 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/kube-proxy:v1.22.0 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node5 -> node5]
+changed: [node4 -> node4]
+changed: [node6 -> node6]
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Starting download of file] ********************
+ok: [node1] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/etcd/etcd-v3.5.0-linux-amd64.tar.gz"
+}
+ok: [node2] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/etcd/etcd-v3.5.0-linux-amd64.tar.gz"
+}
+ok: [node3] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/etcd/etcd-v3.5.0-linux-amd64.tar.gz"
+}
+
+TASK [download : download_file | Set pathname of cached file] ******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Create dest directory on node] ****************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Download item] ********************************
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/extract_file.yml for node1, node2, node3
+
+TASK [download : extract_file | Unpacking archive] *****************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [download : download_file | Starting download of file] ********************
+ok: [node1] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubectl"
+}
+ok: [node2] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubectl"
+}
+ok: [node3] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/v1.22.0/kubectl"
+}
+
+TASK [download : download_file | Set pathname of cached file] ******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Create dest directory on node] ****************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Download item] ********************************
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/extract_file.yml for node1, node2, node3
+
+TASK [download : download_file | Starting download of file] ********************
+ok: [node1] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3.tar.gz"
+}
+ok: [node2] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3.tar.gz"
+}
+ok: [node3] => {
+    "msg": "http://10.140.79.120:8081/k8s/kubernetes/calico/v3.20.3.tar.gz"
+}
+
+TASK [download : download_file | Set pathname of cached file] ******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : download_file | Create dest directory on node] ****************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [download : download_file | Download item] ********************************
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+changed: [node2 -> node2]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/extract_file.yml for node1, node2, node3
+
+TASK [download : extract_file | Unpacking archive] *****************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/coredns/coredns"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/coredns/coredns"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/coredns/coredns"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node1]
+ok: [node3]
+ok: [node2]
+
+TASK [download : debug] ********************************************************
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/coredns/coredns:v1.8.0 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/coredns/coredns:v1.8.0 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/coredns/coredns:v1.8.0 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+changed: [node2 -> node2]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/cpa/cluster-proportional-autoscaler-amd64"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/cpa/cluster-proportional-autoscaler-amd64"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/cpa/cluster-proportional-autoscaler-amd64"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/cpa/cluster-proportional-autoscaler-amd64:1.8.5 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/cpa/cluster-proportional-autoscaler-amd64:1.8.5 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/cpa/cluster-proportional-autoscaler-amd64:1.8.5 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/metrics-server/metrics-server"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/metrics-server/metrics-server"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/metrics-server/metrics-server"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/metrics-server/metrics-server:v0.5.0 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/metrics-server/metrics-server:v0.5.0 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/metrics-server/metrics-server:v0.5.0 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/addon-resizer"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/addon-resizer"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/addon-resizer"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/addon-resizer:1.8.11 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/addon-resizer:1.8.11 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/addon-resizer:1.8.11 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/kubernetesui/dashboard-amd64"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/kubernetesui/dashboard-amd64"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/kubernetesui/dashboard-amd64"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/kubernetesui/dashboard-amd64:v2.4.0 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/kubernetesui/dashboard-amd64:v2.4.0 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/kubernetesui/dashboard-amd64:v2.4.0 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node1 -> node1]
+changed: [node3 -> node3]
+changed: [node2 -> node2]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set default values for flag variables] ************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Display the name of the image being processed] ***
+ok: [node1] => {
+    "msg": "10.140.79.120:5000/kubernetesui/metrics-scraper"
+}
+ok: [node2] => {
+    "msg": "10.140.79.120:5000/kubernetesui/metrics-scraper"
+}
+ok: [node3] => {
+    "msg": "10.140.79.120:5000/kubernetesui/metrics-scraper"
+}
+
+TASK [download : set_container_facts | Set if containers should be pulled by digest] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define by what name to pull the image] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define file name of image] **************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : set_container_facts | Define path of image] *******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker] ***********************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : Set image save/load command for docker on localhost] **********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/download/tasks/check_pull_required.yml for node1, node2, node3
+
+TASK [download : check_pull_required |  Generate a list of information about the images on a node] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : check_pull_required | Set pull_required if the desired image is not yet loaded] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [download : debug] ********************************************************
+ok: [node1] => {
+    "msg": "Pull 10.140.79.120:5000/kubernetesui/metrics-scraper:v1.0.7 required is: True"
+}
+ok: [node2] => {
+    "msg": "Pull 10.140.79.120:5000/kubernetesui/metrics-scraper:v1.0.7 required is: True"
+}
+ok: [node3] => {
+    "msg": "Pull 10.140.79.120:5000/kubernetesui/metrics-scraper:v1.0.7 required is: True"
+}
+
+TASK [download : download_container | Download image if required] **************
+changed: [node1 -> node1]
+changed: [node2 -> node2]
+changed: [node3 -> node3]
+
+TASK [download : download_container | Remove container image from cache] *******
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+PLAY [etcd] ********************************************************************
+
+TASK [kubespray-defaults : Configure defaults] *********************************
+ok: [node1] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node2] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node3] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+
+TASK [adduser : User | Create User Group] **************************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [adduser : User | Create User] ********************************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [adduser : User | Create User Group] **************************************
+ok: [node1]
+ok: [node3]
+ok: [node2]
+
+TASK [adduser : User | Create User] ********************************************
+ok: [node2]
+ok: [node1]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/check_certs.yml for node1, node2, node3
+
+TASK [etcd : Check_certs | Register certs that have already been generated on first etcd node] ***
+ok: [node1 -> node1]
+
+TASK [etcd : Check_certs | Set default value for 'sync_certs', 'gen_certs' and 'etcd_secret_changed' to false] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [etcd : Check certs | Register ca and etcd admin/member certs on etcd hosts] ***
+ok: [node1] => (item=ca.pem)
+ok: [node2] => (item=ca.pem)
+ok: [node3] => (item=ca.pem)
+ok: [node1] => (item=member-node1.pem)
+ok: [node2] => (item=member-node2.pem)
+ok: [node3] => (item=member-node3.pem)
+ok: [node1] => (item=member-node1-key.pem)
+ok: [node2] => (item=member-node2-key.pem)
+ok: [node3] => (item=member-node3-key.pem)
+ok: [node1] => (item=admin-node1.pem)
+ok: [node2] => (item=admin-node2.pem)
+ok: [node3] => (item=admin-node3.pem)
+ok: [node1] => (item=admin-node1-key.pem)
+ok: [node2] => (item=admin-node2-key.pem)
+ok: [node3] => (item=admin-node3-key.pem)
+
+TASK [etcd : Check certs | Register ca and etcd node certs on kubernetes hosts] ***
+ok: [node1] => (item=ca.pem)
+ok: [node2] => (item=ca.pem)
+ok: [node3] => (item=ca.pem)
+ok: [node1] => (item=node-node1.pem)
+ok: [node2] => (item=node-node2.pem)
+ok: [node3] => (item=node-node3.pem)
+ok: [node1] => (item=node-node1-key.pem)
+ok: [node2] => (item=node-node2-key.pem)
+ok: [node3] => (item=node-node3-key.pem)
+
+TASK [etcd : Check_certs | Set 'gen_certs' to true if expected certificates are not on the first etcd node] ***
+ok: [node1] => (item=/etc/ssl/etcd/ssl/ca.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+ok: [node1] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+
+TASK [etcd : Check_certs | Set 'gen_master_certs' object to track whether member and admin certs exist on first etcd node] ***
+ok: [node1]
+
+TASK [etcd : Check_certs | Set 'gen_node_certs' object to track whether node certs exist on first etcd node] ***
+ok: [node1]
+
+TASK [etcd : Check_certs | Set 'etcd_member_requires_sync' to true if ca or member/admin cert and key don't exist on etcd member or checksum doesn't match] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [etcd : Check_certs | Set 'sync_certs' to true] ***************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/gen_certs_script.yml for node1, node2, node3
+
+TASK [etcd : Gen_certs | create etcd cert dir] *********************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [etcd : Gen_certs | create etcd script dir (on node1)] ********************
+changed: [node1]
+
+TASK [etcd : Gen_certs | write openssl config] *********************************
+changed: [node1 -> node1]
+
+TASK [etcd : Gen_certs | copy certs generation script] *************************
+changed: [node1]
+
+TASK [etcd : Gen_certs | run cert generation script] ***************************
+changed: [node1 -> node1]
+
+TASK [etcd : Gen_certs | Gather etcd member and admin certs from first etcd node] ***
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/ca.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/ca.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/ca-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/ca-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+
+TASK [etcd : Gen_certs | Write etcd member and admin certs to other etcd nodes] ***
+changed: [node3] => (item=/etc/ssl/etcd/ssl/ca.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/ca.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/ca-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/ca-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+
+TASK [etcd : Gen_certs | Gather node certs from first etcd node] ***************
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+
+TASK [etcd : Gen_certs | Write node certs to other etcd nodes] *****************
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+
+TASK [etcd : Gen_certs | Set cert names per node] ******************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [etcd : Gen_certs | check certificate permissions] ************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/upd_ca_trust.yml for node1, node2, node3
+
+TASK [etcd : Gen_certs | target ca-certificate store file] *********************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [etcd : Gen_certs | add CA to trusted CA dir] *****************************
+changed: [node1]
+changed: [node3]
+changed: [node2]
+
+TASK [etcd : Gen_certs | update ca-certificates (Debian/Ubuntu/SUSE/Flatcar)] ***
+changed: [node1]
+changed: [node3]
+changed: [node2]
+
+TASK [etcd : Gen_certs | Get etcd certificate serials] *************************
+ok: [node1]
+ok: [node3]
+ok: [node2]
+
+TASK [etcd : Set etcd_client_cert_serial] **************************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/install_host.yml for node1, node2, node3
+
+TASK [etcd : install | Copy etcd and etcdctl binary from download dir] *********
+changed: [node1] => (item=etcd)
+changed: [node2] => (item=etcd)
+changed: [node3] => (item=etcd)
+changed: [node1] => (item=etcdctl)
+changed: [node2] => (item=etcdctl)
+changed: [node3] => (item=etcdctl)
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/configure.yml for node1, node2, node3
+
+TASK [etcd : Configure | Check if etcd cluster is healthy] *********************
+ok: [node1]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/refresh_config.yml for node1, node2, node3
+
+TASK [etcd : Refresh config | Create etcd config file] *************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [etcd : Configure | Copy etcd.service systemd file] ***********************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [etcd : Configure | reload systemd] ***************************************
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [etcd : Configure | Ensure etcd is running] *******************************
+changed: [node1]
+changed: [node3]
+changed: [node2]
+
+TASK [etcd : Configure | Wait for etcd cluster to be healthy] ******************
+ok: [node1]
+
+TASK [etcd : Configure | Check if member is in etcd cluster] *******************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/refresh_config.yml for node1, node2, node3
+
+TASK [etcd : Refresh config | Create etcd config file] *************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/refresh_config.yml for node1, node2, node3
+
+TASK [etcd : Refresh config | Create etcd config file] *************************
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+RUNNING HANDLER [etcd : restart etcd] ******************************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+RUNNING HANDLER [etcd : Backup etcd data] **************************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+RUNNING HANDLER [etcd : Refresh Time Fact] *************************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+RUNNING HANDLER [etcd : Set Backup Directory] **********************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+RUNNING HANDLER [etcd : Create Backup Directory] *******************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+RUNNING HANDLER [etcd : Stat etcd v2 data directory] ***************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+RUNNING HANDLER [etcd : Backup etcd v2 data] ***********************************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+RUNNING HANDLER [etcd : Backup etcd v3 data] ***********************************
+changed: [node1]
+changed: [node3]
+changed: [node2]
+
+RUNNING HANDLER [etcd : etcd | reload systemd] *********************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+RUNNING HANDLER [etcd : reload etcd] *******************************************
+changed: [node2]
+changed: [node3]
+changed: [node1]
+
+RUNNING HANDLER [etcd : wait for etcd up] **************************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+RUNNING HANDLER [etcd : set etcd_secret_changed] *******************************
+ok: [node1]
+
+PLAY [k8s_cluster] *************************************************************
+
+TASK [kubespray-defaults : Configure defaults] *********************************
+ok: [node4] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node5] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node6] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node1] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node2] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node3] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+
+TASK [adduser : User | Create User Group] **************************************
+changed: [node4]
+ok: [node2]
+changed: [node5]
+ok: [node1]
+changed: [node6]
+ok: [node3]
+
+TASK [adduser : User | Create User] ********************************************
+changed: [node5]
+ok: [node1]
+ok: [node2]
+changed: [node4]
+changed: [node6]
+ok: [node3]
+
+TASK [adduser : User | Create User Group] **************************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [adduser : User | Create User] ********************************************
+ok: [node4]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node5]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/check_certs.yml for node4, node5, node6, node1, node2, node3
+
+TASK [etcd : Check_certs | Register certs that have already been generated on first etcd node] ***
+ok: [node4 -> node1]
+
+TASK [etcd : Check_certs | Set default value for 'sync_certs', 'gen_certs' and 'etcd_secret_changed' to false] ***
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [etcd : Check certs | Register ca and etcd admin/member certs on etcd hosts] ***
+ok: [node1] => (item=ca.pem)
+ok: [node3] => (item=ca.pem)
+ok: [node2] => (item=ca.pem)
+ok: [node1] => (item=member-node1.pem)
+ok: [node2] => (item=member-node2.pem)
+ok: [node3] => (item=member-node3.pem)
+ok: [node1] => (item=member-node1-key.pem)
+ok: [node2] => (item=member-node2-key.pem)
+ok: [node3] => (item=member-node3-key.pem)
+ok: [node1] => (item=admin-node1.pem)
+ok: [node2] => (item=admin-node2.pem)
+ok: [node3] => (item=admin-node3.pem)
+ok: [node1] => (item=admin-node1-key.pem)
+ok: [node2] => (item=admin-node2-key.pem)
+ok: [node3] => (item=admin-node3-key.pem)
+
+TASK [etcd : Check certs | Register ca and etcd node certs on kubernetes hosts] ***
+ok: [node4] => (item=ca.pem)
+ok: [node5] => (item=ca.pem)
+ok: [node6] => (item=ca.pem)
+ok: [node1] => (item=ca.pem)
+ok: [node2] => (item=ca.pem)
+ok: [node5] => (item=node-node5.pem)
+ok: [node4] => (item=node-node4.pem)
+ok: [node6] => (item=node-node6.pem)
+ok: [node1] => (item=node-node1.pem)
+ok: [node5] => (item=node-node5-key.pem)
+ok: [node2] => (item=node-node2.pem)
+ok: [node4] => (item=node-node4-key.pem)
+ok: [node6] => (item=node-node6-key.pem)
+ok: [node1] => (item=node-node1-key.pem)
+ok: [node2] => (item=node-node2-key.pem)
+ok: [node3] => (item=ca.pem)
+ok: [node3] => (item=node-node3.pem)
+ok: [node3] => (item=node-node3-key.pem)
+
+TASK [etcd : Check_certs | Set 'gen_certs' to true if expected certificates are not on the first etcd node] ***
+ok: [node4] => (item=/etc/ssl/etcd/ssl/ca.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+ok: [node4] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+
+TASK [etcd : Check_certs | Set 'gen_master_certs' object to track whether member and admin certs exist on first etcd node] ***
+ok: [node4]
+
+TASK [etcd : Check_certs | Set 'gen_node_certs' object to track whether node certs exist on first etcd node] ***
+ok: [node4]
+
+TASK [etcd : Check_certs | Set 'kubernetes_host_requires_sync' to true if ca or node cert and key don't exist on kubernetes host or checksum doesn't match] ***
+ok: [node4]
+ok: [node6]
+ok: [node5]
+
+TASK [etcd : Check_certs | Set 'sync_certs' to true] ***************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/gen_certs_script.yml for node4, node5, node6, node1, node2, node3
+
+TASK [etcd : Gen_certs | create etcd cert dir] *********************************
+changed: [node4]
+changed: [node5]
+changed: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [etcd : Gen_certs | run cert generation script] ***************************
+changed: [node4 -> node1]
+
+TASK [etcd : Gen_certs | Gather etcd member and admin certs from first etcd node] ***
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/ca.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/ca.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/ca-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/ca-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+
+TASK [etcd : Gen_certs | Write etcd member and admin certs to other etcd nodes] ***
+changed: [node2] => (item=/etc/ssl/etcd/ssl/ca.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/ca.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/ca-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/ca-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node1.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node1-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node1.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node1-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node2.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node2-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node2.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node2-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node3.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/admin-node3-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node3.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/member-node3-key.pem)
+
+TASK [etcd : Gen_certs | Gather node certs from first etcd node] ***************
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+ok: [node2 -> node1] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+ok: [node3 -> node1] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+
+TASK [etcd : Gen_certs | Write node certs to other etcd nodes] *****************
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node4.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node4-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node5.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node5-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node6.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node6-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node1.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node1-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node2.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node2-key.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node3.pem)
+changed: [node2] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+changed: [node3] => (item=/etc/ssl/etcd/ssl/node-node3-key.pem)
+
+TASK [etcd : Gen_certs | Set cert names per node] ******************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [etcd : Check_certs | Set 'sync_certs' to true on nodes] ******************
+ok: [node4] => (item=ca.pem)
+ok: [node4] => (item=node-node4.pem)
+ok: [node5] => (item=ca.pem)
+ok: [node6] => (item=ca.pem)
+ok: [node4] => (item=node-node4-key.pem)
+ok: [node6] => (item=node-node6.pem)
+ok: [node5] => (item=node-node5.pem)
+ok: [node6] => (item=node-node6-key.pem)
+ok: [node5] => (item=node-node5-key.pem)
+
+TASK [etcd : Gen_certs | Gather node certs] ************************************
+changed: [node4 -> node1]
+changed: [node5 -> node1]
+changed: [node6 -> node1]
+
+TASK [etcd : Gen_certs | Copy certs on nodes] **********************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+
+TASK [etcd : Gen_certs | check certificate permissions] ************************
+changed: [node4]
+changed: [node5]
+changed: [node1]
+changed: [node6]
+changed: [node2]
+changed: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/upd_ca_trust.yml for node4, node5, node6, node1, node2, node3
+
+TASK [etcd : Gen_certs | target ca-certificate store file] *********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [etcd : Gen_certs | add CA to trusted CA dir] *****************************
+changed: [node4]
+changed: [node5]
+ok: [node2]
+changed: [node6]
+ok: [node1]
+ok: [node3]
+
+TASK [etcd : Gen_certs | update ca-certificates (Debian/Ubuntu/SUSE/Flatcar)] ***
+changed: [node5]
+changed: [node4]
+changed: [node6]
+
+TASK [etcd : Gen_certs | Get etcd certificate serials] *************************
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [etcd : Set etcd_client_cert_serial] **************************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/install_host.yml for node1, node2, node3
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/configure.yml for node1, node2, node3
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/refresh_config.yml for node1, node2, node3
+
+TASK [etcd : Configure | reload systemd] ***************************************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/refresh_config.yml for node1, node2, node3
+included: /home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/etcd/tasks/refresh_config.yml for node1, node2, node3
+
+RUNNING HANDLER [etcd : set etcd_secret_changed] *******************************
+ok: [node4]
+
+PLAY [k8s_cluster] *************************************************************
+
+TASK [kubespray-defaults : Configure defaults] *********************************
+ok: [node4] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node5] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node6] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node1] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node2] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node3] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+
+TASK [kubernetes/node : look up docker cgroup driver] **************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/node : set kubelet_cgroup_driver_detected fact for docker] ****
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/node : set kubelet_cgroup_driver] *****************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node3]
+ok: [node2]
+
+TASK [kubernetes/node : os specific vars] **************************************
+ok: [node4] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/node/vars/ubuntu-20.yml)
+ok: [node5] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/node/vars/ubuntu-20.yml)
+ok: [node1] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/node/vars/ubuntu-20.yml)
+ok: [node6] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/node/vars/ubuntu-20.yml)
+ok: [node2] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/node/vars/ubuntu-20.yml)
+ok: [node3] => (item=/home/cimbuild/if-iaac/kubespray-haproxy-keepalived/kubespray/roles/kubernetes/node/vars/ubuntu-20.yml)
+
+TASK [kubernetes/node : Pre-upgrade | check if kubelet container exists] *******
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [kubernetes/node : Ensure /var/lib/cni exists] ****************************
+changed: [node4]
+changed: [node5]
+changed: [node6]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [kubernetes/node : install | Copy kubeadm binary from download dir] *******
+changed: [node5]
+changed: [node4]
+changed: [node6]
+
+TASK [kubernetes/node : install | Copy kubelet binary from download dir] *******
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+TASK [kubernetes/node : Ensure nodePort range is reserved] *********************
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+TASK [kubernetes/node : Verify if br_netfilter module exists] ******************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [kubernetes/node : Verify br_netfilter module path exists] ****************
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+TASK [kubernetes/node : Enable br_netfilter module] ****************************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/node : Persist br_netfilter module] ***************************
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+TASK [kubernetes/node : Check if bridge-nf-call-iptables key exists] ***********
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/node : Enable bridge-nf-call tables] **************************
+changed: [node4] => (item=net.bridge.bridge-nf-call-iptables)
+changed: [node5] => (item=net.bridge.bridge-nf-call-iptables)
+changed: [node6] => (item=net.bridge.bridge-nf-call-iptables)
+changed: [node2] => (item=net.bridge.bridge-nf-call-iptables)
+changed: [node1] => (item=net.bridge.bridge-nf-call-iptables)
+changed: [node5] => (item=net.bridge.bridge-nf-call-arptables)
+changed: [node4] => (item=net.bridge.bridge-nf-call-arptables)
+changed: [node6] => (item=net.bridge.bridge-nf-call-arptables)
+changed: [node2] => (item=net.bridge.bridge-nf-call-arptables)
+changed: [node1] => (item=net.bridge.bridge-nf-call-arptables)
+changed: [node5] => (item=net.bridge.bridge-nf-call-ip6tables)
+changed: [node4] => (item=net.bridge.bridge-nf-call-ip6tables)
+changed: [node6] => (item=net.bridge.bridge-nf-call-ip6tables)
+changed: [node1] => (item=net.bridge.bridge-nf-call-ip6tables)
+changed: [node2] => (item=net.bridge.bridge-nf-call-ip6tables)
+changed: [node3] => (item=net.bridge.bridge-nf-call-iptables)
+changed: [node3] => (item=net.bridge.bridge-nf-call-arptables)
+changed: [node3] => (item=net.bridge.bridge-nf-call-ip6tables)
+
+TASK [kubernetes/node : Modprobe Kernel Module for IPVS] ***********************
+changed: [node4] => (item=ip_vs)
+changed: [node5] => (item=ip_vs)
+changed: [node6] => (item=ip_vs)
+changed: [node1] => (item=ip_vs)
+changed: [node2] => (item=ip_vs)
+changed: [node4] => (item=ip_vs_rr)
+changed: [node5] => (item=ip_vs_rr)
+changed: [node1] => (item=ip_vs_rr)
+changed: [node6] => (item=ip_vs_rr)
+changed: [node2] => (item=ip_vs_rr)
+changed: [node4] => (item=ip_vs_wrr)
+changed: [node5] => (item=ip_vs_wrr)
+changed: [node1] => (item=ip_vs_wrr)
+changed: [node6] => (item=ip_vs_wrr)
+changed: [node2] => (item=ip_vs_wrr)
+changed: [node4] => (item=ip_vs_sh)
+changed: [node5] => (item=ip_vs_sh)
+changed: [node1] => (item=ip_vs_sh)
+changed: [node2] => (item=ip_vs_sh)
+changed: [node6] => (item=ip_vs_sh)
+changed: [node3] => (item=ip_vs)
+changed: [node3] => (item=ip_vs_rr)
+changed: [node3] => (item=ip_vs_wrr)
+changed: [node3] => (item=ip_vs_sh)
+
+TASK [kubernetes/node : Modprobe nf_conntrack_ipv4] ****************************
+fatal: [node4]: FAILED! => {"changed": false, "msg": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-122-generic\n", "name": "nf_conntrack_ipv4", "params": "", "rc": 1, "state": "present", "stderr": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-122-generic\n", "stderr_lines": ["modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-122-generic"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [node5]: FAILED! => {"changed": false, "msg": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-122-generic\n", "name": "nf_conntrack_ipv4", "params": "", "rc": 1, "state": "present", "stderr": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-122-generic\n", "stderr_lines": ["modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-122-generic"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [node6]: FAILED! => {"changed": false, "msg": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-122-generic\n", "name": "nf_conntrack_ipv4", "params": "", "rc": 1, "state": "present", "stderr": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-122-generic\n", "stderr_lines": ["modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-122-generic"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [node2]: FAILED! => {"changed": false, "msg": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-121-generic\n", "name": "nf_conntrack_ipv4", "params": "", "rc": 1, "state": "present", "stderr": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-121-generic\n", "stderr_lines": ["modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-121-generic"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [node1]: FAILED! => {"changed": false, "msg": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-121-generic\n", "name": "nf_conntrack_ipv4", "params": "", "rc": 1, "state": "present", "stderr": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-121-generic\n", "stderr_lines": ["modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-121-generic"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [node3]: FAILED! => {"changed": false, "msg": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-121-generic\n", "name": "nf_conntrack_ipv4", "params": "", "rc": 1, "state": "present", "stderr": "modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-121-generic\n", "stderr_lines": ["modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/5.4.0-121-generic"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [kubernetes/node : Persist ip_vs modules] *********************************
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+TASK [kubernetes/node : Set kubelet api version to v1beta1] ********************
+ok: [node4]
+ok: [node5]
+ok: [node6]
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/node : Write kubelet environment config file (kubeadm)] *******
+changed: [node6]
+changed: [node4]
+changed: [node5]
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+TASK [kubernetes/node : Write kubelet config file] *****************************
+changed: [node6]
+changed: [node4]
+changed: [node2]
+changed: [node5]
+changed: [node1]
+changed: [node3]
+
+TASK [kubernetes/node : Write kubelet systemd init file] ***********************
+changed: [node5]
+changed: [node4]
+changed: [node1]
+changed: [node6]
+changed: [node2]
+changed: [node3]
+
+RUNNING HANDLER [kubernetes/node : Node | restart kubelet] *********************
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+RUNNING HANDLER [kubernetes/node : Kubelet | reload systemd] *******************
+ok: [node5]
+ok: [node4]
+ok: [node6]
+ok: [node2]
+ok: [node1]
+ok: [node3]
+
+RUNNING HANDLER [kubernetes/node : Kubelet | restart kubelet] ******************
+changed: [node5]
+changed: [node6]
+changed: [node2]
+changed: [node4]
+changed: [node1]
+changed: [node3]
+
+TASK [kubernetes/node : Enable kubelet] ****************************************
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+RUNNING HANDLER [kubernetes/node : Kubelet | restart kubelet] ******************
+changed: [node5]
+changed: [node4]
+changed: [node6]
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+PLAY [kube_control_plane] ******************************************************
+
+TASK [kubespray-defaults : Configure defaults] *********************************
+ok: [node1] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node2] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+ok: [node3] => {
+    "msg": "Check roles/kubespray-defaults/defaults/main.yml"
+}
+
+TASK [kubernetes/control-plane : Check which kube-control nodes are already members of the cluster] ***
+fatal: [node1]: FAILED! => {"changed": false, "cmd": "/usr/local/bin/kubectl get nodes --selector=node-role.kubernetes.io/control-plane -o json", "msg": "[Errno 2] No such file or directory: b'/usr/local/bin/kubectl'", "rc": 2}
+...ignoring
+fatal: [node2]: FAILED! => {"changed": false, "cmd": "/usr/local/bin/kubectl get nodes --selector=node-role.kubernetes.io/control-plane -o json", "msg": "[Errno 2] No such file or directory: b'/usr/local/bin/kubectl'", "rc": 2}
+...ignoring
+fatal: [node3]: FAILED! => {"changed": false, "cmd": "/usr/local/bin/kubectl get nodes --selector=node-role.kubernetes.io/control-plane -o json", "msg": "[Errno 2] No such file or directory: b'/usr/local/bin/kubectl'", "rc": 2}
+...ignoring
+
+TASK [kubernetes/control-plane : Set fact first_kube_control_plane] ************
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/control-plane : Create kube-scheduler config] *****************
+changed: [node1]
+changed: [node3]
+changed: [node2]
+
+TASK [kubernetes/control-plane : Install | Copy kubectl binary from download dir] ***
+changed: [node2]
+changed: [node1]
+changed: [node3]
+
+TASK [kubernetes/control-plane : Install kubectl bash completion] **************
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [kubernetes/control-plane : Set kubectl bash completion file permissions] ***
+changed: [node1]
+changed: [node2]
+changed: [node3]
+
+TASK [kubernetes/control-plane : kubeadm | Check if kubeadm has already run] ***
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/control-plane : kubeadm | aggregate all SANs] *****************
+ok: [node1]
+ok: [node3]
+ok: [node2]
+
+TASK [kubernetes/control-plane : set kubeadm_config_api_fqdn define] ***********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/control-plane : Set kubeadm api version to v1beta2] ***********
+ok: [node1]
+ok: [node2]
+ok: [node3]
+
+TASK [kubernetes/control-plane : kubeadm | Create kubeadm config] **************
+changed: [node1]
+changed: [node3]
+changed: [node2]
+FAILED - RETRYING: kubeadm | Initialize first master (3 retries left).
+FAILED - RETRYING: kubeadm | Initialize first master (2 retries left).
+FAILED - RETRYING: kubeadm | Initialize first master (1 retries left).
+
+TASK [kubernetes/control-plane : kubeadm | Initialize first master] ************
+fatal: [node1]: FAILED! => {"attempts": 3, "changed": true, "cmd": ["timeout", "-k", "300s", "300s", "/usr/local/bin/kubeadm", "init", "--config=/etc/kubernetes/kubeadm-config.yaml", "--ignore-preflight-errors=all", "--skip-phases=addon/coredns", "--upload-certs"], "delta": "0:05:00.007078", "end": "2022-08-10 10:57:49.880586", "failed_when_result": true, "msg": "non-zero return code", "rc": 124, "start": "2022-08-10 10:52:49.873508", "stderr": "W0810 10:52:49.940294   23631 utils.go:69] The recommended value for \"clusterDNS\" in \"KubeletConfiguration\" is: [10.233.0.10]; the provided value is: [169.254.25.10]\n\t[WARNING Port-6443]: Port 6443 is in use\n\t[WARNING Port-10259]: Port 10259 is in use\n\t[WARNING Port-10257]: Port 10257 is in use\n\t[WARNING FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml]: /etc/kubernetes/manifests/kube-apiserver.yaml already exists\n\t[WARNING FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml]: /etc/kubernetes/manifests/kube-controller-manager.yaml already exists\n\t[WARNING FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml]: /etc/kubernetes/manifests/kube-scheduler.yaml already exists\n\t[WARNING Port-10250]: Port 10250 is in use", "stderr_lines": ["W0810 10:52:49.940294   23631 utils.go:69] The recommended value for \"clusterDNS\" in \"KubeletConfiguration\" is: [10.233.0.10]; the provided value is: [169.254.25.10]", "\t[WARNING Port-6443]: Port 6443 is in use", "\t[WARNING Port-10259]: Port 10259 is in use", "\t[WARNING Port-10257]: Port 10257 is in use", "\t[WARNING FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml]: /etc/kubernetes/manifests/kube-apiserver.yaml already exists", "\t[WARNING FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml]: /etc/kubernetes/manifests/kube-controller-manager.yaml already exists", "\t[WARNING FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml]: /etc/kubernetes/manifests/kube-scheduler.yaml already exists", "\t[WARNING Port-10250]: Port 10250 is in use"], "stdout": "[init] Using Kubernetes version: v1.22.0\n[preflight] Running pre-flight checks\n[preflight] Pulling images required for setting up a Kubernetes cluster\n[preflight] This might take a minute or two, depending on the speed of your internet connection\n[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'\n[certs] Using certificateDir folder \"/etc/kubernetes/ssl\"\n[certs] Using existing ca certificate authority\n[certs] Using existing apiserver certificate and key on disk\n[certs] Using existing apiserver-kubelet-client certificate and key on disk\n[certs] Using existing front-proxy-ca certificate authority\n[certs] Using existing front-proxy-client certificate and key on disk\n[certs] External etcd mode: Skipping etcd/ca certificate authority generation\n[certs] External etcd mode: Skipping etcd/server certificate generation\n[certs] External etcd mode: Skipping etcd/peer certificate generation\n[certs] External etcd mode: Skipping etcd/healthcheck-client certificate generation\n[certs] External etcd mode: Skipping apiserver-etcd-client certificate generation\n[certs] Using the existing \"sa\" key\n[kubeconfig] Using kubeconfig folder \"/etc/kubernetes\"\n[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address\n[kubeconfig] Using existing kubeconfig file: \"/etc/kubernetes/admin.conf\"\n[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address\n[kubeconfig] Using existing kubeconfig file: \"/etc/kubernetes/kubelet.conf\"\n[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address\n[kubeconfig] Using existing kubeconfig file: \"/etc/kubernetes/controller-manager.conf\"\n[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address\n[kubeconfig] Using existing kubeconfig file: \"/etc/kubernetes/scheduler.conf\"\n[kubelet-start] Writing kubelet environment file with flags to file \"/var/lib/kubelet/kubeadm-flags.env\"\n[kubelet-start] Writing kubelet configuration to file \"/var/lib/kubelet/config.yaml\"\n[kubelet-start] Starting the kubelet\n[control-plane] Using manifest folder \"/etc/kubernetes/manifests\"\n[control-plane] Creating static Pod manifest for \"kube-apiserver\"\n[control-plane] Creating static Pod manifest for \"kube-controller-manager\"\n[control-plane] Creating static Pod manifest for \"kube-scheduler\"\n[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory \"/etc/kubernetes/manifests\". This can take up to 5m0s\n[kubelet-check] Initial timeout of 40s passed.", "stdout_lines": ["[init] Using Kubernetes version: v1.22.0", "[preflight] Running pre-flight checks", "[preflight] Pulling images required for setting up a Kubernetes cluster", "[preflight] This might take a minute or two, depending on the speed of your internet connection", "[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'", "[certs] Using certificateDir folder \"/etc/kubernetes/ssl\"", "[certs] Using existing ca certificate authority", "[certs] Using existing apiserver certificate and key on disk", "[certs] Using existing apiserver-kubelet-client certificate and key on disk", "[certs] Using existing front-proxy-ca certificate authority", "[certs] Using existing front-proxy-client certificate and key on disk", "[certs] External etcd mode: Skipping etcd/ca certificate authority generation", "[certs] External etcd mode: Skipping etcd/server certificate generation", "[certs] External etcd mode: Skipping etcd/peer certificate generation", "[certs] External etcd mode: Skipping etcd/healthcheck-client certificate generation", "[certs] External etcd mode: Skipping apiserver-etcd-client certificate generation", "[certs] Using the existing \"sa\" key", "[kubeconfig] Using kubeconfig folder \"/etc/kubernetes\"", "[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address", "[kubeconfig] Using existing kubeconfig file: \"/etc/kubernetes/admin.conf\"", "[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address", "[kubeconfig] Using existing kubeconfig file: \"/etc/kubernetes/kubelet.conf\"", "[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address", "[kubeconfig] Using existing kubeconfig file: \"/etc/kubernetes/controller-manager.conf\"", "[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address", "[kubeconfig] Using existing kubeconfig file: \"/etc/kubernetes/scheduler.conf\"", "[kubelet-start] Writing kubelet environment file with flags to file \"/var/lib/kubelet/kubeadm-flags.env\"", "[kubelet-start] Writing kubelet configuration to file \"/var/lib/kubelet/config.yaml\"", "[kubelet-start] Starting the kubelet", "[control-plane] Using manifest folder \"/etc/kubernetes/manifests\"", "[control-plane] Creating static Pod manifest for \"kube-apiserver\"", "[control-plane] Creating static Pod manifest for \"kube-controller-manager\"", "[control-plane] Creating static Pod manifest for \"kube-scheduler\"", "[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory \"/etc/kubernetes/manifests\". This can take up to 5m0s", "[kubelet-check] Initial timeout of 40s passed."]}
+
+NO MORE HOSTS LEFT *************************************************************
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node1                      : ok=543  changed=112  unreachable=0    failed=1    skipped=605  rescued=0    ignored=2   
+node2                      : ok=537  changed=112  unreachable=0    failed=0    skipped=557  rescued=0    ignored=2   
+node3                      : ok=538  changed=113  unreachable=0    failed=0    skipped=556  rescued=0    ignored=2   
+node4                      : ok=371  changed=59   unreachable=0    failed=0    skipped=465  rescued=0    ignored=1   
+node5                      : ok=352  changed=58   unreachable=0    failed=0    skipped=414  rescued=0    ignored=1   
+node6                      : ok=352  changed=58   unreachable=0    failed=0    skipped=414  rescued=0    ignored=1   
+
