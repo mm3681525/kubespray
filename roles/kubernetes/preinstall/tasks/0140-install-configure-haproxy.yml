@@ -1,0 +1,17 @@
+---
+- name: install haproxy
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  vars:
+    packages:
+    - haproxy
+
+- name: copy haproxy configuration
+  ansible.builtin.template:
+    src: templates/haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+  register: haproxyConfigured
+

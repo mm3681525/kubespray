@@ -1,0 +1,24 @@
+vrrp_script chk_haproxy {
+  script "killall -0 haproxy"
+  interval 2
+  weight 2
+}
+
+vrrp_instance VI_1 {
+  interface ens160
+  state BACKUP
+  advert_int 3
+  virtual_router_id 50
+  priority 100
+  unicast_src_ip 10.140.79.122    ##Master 2 IP Address
+  unicast_peer {
+    10.140.79.121                 ##Master 1 IP Address
+    10.140.79.123                 ##Master 3 IP Address
+   }
+  virtual_ipaddress {
+    10.140.79.119                 ##Shared Virtual IP address
+  }
+  track_script {
+    chk_haproxy
+  }
+}

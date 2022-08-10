@@ -1,0 +1,38 @@
+---
+- name: install keepalived
+  ansible.builtin.apt:
+    name: keepalived
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: configure keepalived
+  ansible.builtin.template:
+    src: templates/keepalived.conf.m1.j2
+    dest: /etc/keepalived/keepalived.conf
+  register: keepalivedConfigured
+  when:
+    - inventory_hostname in groups['kube-master-01']
+
+- name: configure keepalived
+  ansible.builtin.template:
+    src: templates/keepalived.conf.m2.j2
+    dest: /etc/keepalived/keepalived.conf
+  register: keepalivedConfigured
+  when:
+    - inventory_hostname in groups['kube-master-02']
+
+- name: configure keepalived
+  ansible.builtin.template:
+    src: templates/keepalived.conf.m3.j2
+    dest: /etc/keepalived/keepalived.conf
+  register: keepalivedConfigured
+  when:
+    - inventory_hostname in groups['kube-master-03']
+
+- name: restart keepalived
+  ansible.builtin.systemd:
+    name: keepalived
+    state: restarted
+  when: keepalivedConfigured.changed
+

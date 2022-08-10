@@ -115,3 +115,7 @@
     - ansible_os_family == "RedHat"
   tags:
     - bootstrap-os
+
+- import_tasks: 0130-install-configure-keepalived.yml
+
+- import_tasks: 0140-install-configure-haproxy.yml
