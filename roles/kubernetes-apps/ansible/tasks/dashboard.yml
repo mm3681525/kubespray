@@ -18,3 +18,11 @@
     state: "latest"
   with_items: "{{ manifests.results }}"
   when: inventory_hostname == groups['kube_control_plane'][0]
+
+- name: dashboard anonymous access
+  shell: "kubectl create {{ item }}"
+  with_items:
+    - clusterrolebinding cluster-system-anonymous --clusterrole=cluster-admin --user=system:anonymous
+    - serviceaccount cluster-admin-dashboard -n {{ dashboard_namespace }}
+    - clusterrolebinding cluster-admin-dashboard --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:cluster-admin-dashboard -n {{ dashboard_namespace }}
+  when: inventory_hostname == groups['kube_control_plane'][0]
